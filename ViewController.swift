@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -17,7 +18,25 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showCamera()
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        
+        switch status {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { (granted) in
+                if granted == false {
+                    fatalError("Please request user enable camera in Settings -> Privacy.")
+                }
+                DispatchQueue.main.async {
+                    self.showCamera()
+                }
+            }
+        case .restricted:
+            fatalError("Please inform the user they cannot use the app due to parental restrictions.")
+        case .denied:
+            fatalError("Please request user to enable camera usage in Settings -> Privacy.")
+        case .authorized:
+            showCamera()
+        }
     }
 
     private func showCamera() {
