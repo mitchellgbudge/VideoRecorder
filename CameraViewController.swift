@@ -40,6 +40,18 @@ class CameraViewController: UIViewController {
         
         cameraView.session = captureSession
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        
+        view.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc func handleTapGesture(_ tapGesture: UITapGestureRecognizer) {
+        print("Play movie")
+        if let player = player {
+            player.seek(to: CMTime.zero)
+            player.play()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
