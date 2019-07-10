@@ -10,5 +10,11 @@ import UIKit
 
 class CameraViewController: UIViewController {
     
+    @IBOutlet weak var recordButton: UIButton!
+    
+    @IBAction func recordButtonPressed(_ sender: Any) {
+        
+    }
+    
 }
 

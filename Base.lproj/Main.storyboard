@@ -26,21 +26,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="125" y="19"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="EW5-CO-tMu">
             <objects>
                 <viewController id="7XP-mB-4sW" customClass="CameraViewController" customModule="VideoRecorder" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ufm-8r-fSL">
+                    <view key="view" contentMode="scaleToFill" id="ufm-8r-fSL" customClass="CameraPreviewView" customModule="VideoRecorder" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuw-zc-4BK">
+                                <rect key="frame" x="157" y="702" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="wEM-rB-Y41"/>
+                                    <constraint firstAttribute="width" constant="100" id="xYM-A2-q89"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="Record"/>
+                                <connections>
+                                    <action selector="recordButtonPressed:" destination="7XP-mB-4sW" eventType="touchUpInside" id="5gM-YL-Uev"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QMa-04-eHv" firstAttribute="bottom" secondItem="kuw-zc-4BK" secondAttribute="bottom" constant="60" id="owi-ti-pVn"/>
+                            <constraint firstItem="kuw-zc-4BK" firstAttribute="centerX" secondItem="ufm-8r-fSL" secondAttribute="centerX" id="sDx-DM-bLi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QMa-04-eHv"/>
                     </view>
+                    <connections>
+                        <outlet property="recordButton" destination="kuw-zc-4BK" id="wOQ-0e-WLl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udn-OH-wSU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="139"/>
+            <point key="canvasLocation" x="803" y="19"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Record" width="116" height="116"/>
+    </resources>
 </document>
